@@ -1,0 +1,677 @@
+#tab2,
+#tab3,
+#tab4 {
+    display: none;
+}
+
+/* old */
+
+.App {
+    width: 100%;
+    font-family: monospace;
+    font-size: 1.2em;
+}
+
+.App input {
+    font-family: monospace;
+}
+
+html {
+    background: radial-gradient(ellipse at top, #1B2735 0%, #090A0F 100%);
+
+}
+
+@font-face {
+    font-family: 'runescape_chat_07regular';
+    src: url('./img/runescape-chat-07-webfont.woff2') format('woff2'),
+        url('./img/runescape-chat-07-webfont.woff') format('woff');
+}
+
+.text-indent {
+    text-indent: 30px;
+}
+
+header {
+    position: relative;
+    color: aliceblue;
+    text-align: center;
+    max-height: 60vh;
+    user-select: none;
+    font-family: 'runescape_chat_07regular';
+}
+
+.headerText h1 {
+    border: 2px solid var(--star2);
+    background-color: rgb(0, 0, 0, .4);
+    border-radius: 100px;
+}
+
+.headerText {
+    font-size: 180%;
+    z-index: 10;
+    animation-name: floating;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.headerText h1,
+.headerText h4 {
+    text-shadow: -1px 0 var(black), 0 1px var(black), 1px 0 var(black), 0 -1px var(black);
+    margin-top: 0px;
+    padding: 20px;
+    margin-bottom: 0px;
+}
+
+.dino-bird {
+    max-width: 250px;
+    max-height: 250px;
+}
+
+nav {
+    user-select: none;
+    border-top: 1px aliceblue solid;
+    border-bottom: 1px aliceblue solid;
+}
+
+a:-webkit-any-link {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    text-align: center;
+}
+
+nav ul li {
+    float: left;
+    border: 1px solid white;
+    color: white;
+    background-color: black;
+    font-size: 1.1em;
+    padding: 10px;
+    margin: 0px 11px 0px 11px;
+    min-width: 75px;
+    box-shadow: .25em .2em black;
+    transition: .25s;
+}
+
+:root {
+    --about: #ffff00;
+    --projects: #00ffff;
+    --resume: #bfff00;
+    --contact: #ff00ff;
+    --star1: #ffff00;
+    --star2: #ffff00;
+}
+
+.detail-icon {
+    width: 18px !important;
+}
+
+.about-photo {
+    width: 200px !important;
+}
+
+#about-nav:hover,
+#about-nav:focus {
+    box-shadow: 0 .5em .7em -.1em var(--about), inset 0em .5em .9em rgba(99, 99, 99, 0.6);
+}
+
+#projects-nav:hover,
+#projects-nav:focus {
+    box-shadow: 0 .5em .7em -.1em var(--projects), inset 0em .5em .9em rgba(99, 99, 99, 0.6);
+}
+
+#resume-nav:hover,
+#resume-nav:focus {
+    box-shadow: 0 .5em .7em -.1em var(--resume), inset 0em .5em .9em rgba(99, 99, 99, 0.6);
+}
+
+#contact-nav:hover,
+#contact-nav:focus {
+    box-shadow: 0 .5em .7em -.1em var(--contact), inset 0em .5em .9em rgba(99, 99, 99, 0.6);
+}
+
+nav ul li:hover,
+nav ul li:focus {
+    transform: translateY(-0.15em);
+    cursor: pointer;
+}
+
+footer {
+    border-top: solid 1px aliceblue;
+    color: aliceblue;
+    outline: 1px solid rgb(109, 112, 116);
+    padding: 10px;
+    text-align: center;
+}
+
+/*PROFILE CARD*/
+
+.profileCard {
+    margin: 50px 20% 40px 20%;
+    background-color: rgb(240, 248, 255, .85);
+    box-shadow: 0em 0em .5em .5em var(--about);
+    border: 2px solid black;
+    outline: 2px solid white;
+    transition: all .3s .3s cubic-bezier(.5, 0, .5, 1);
+    border-radius: 25px;
+}
+
+.btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.center {
+    text-align: center;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.btn-container input {
+    padding: 8px;
+    width: 75px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 3px;
+}
+
+.babyText {
+    font-size: .75em;
+}
+
+.btn-container input:hover {
+    cursor: pointer;
+    background-color: #a9ffff;
+}
+
+#prof-pic {
+    max-width: 150px;
+}
+
+/*RESUME CARD*/
+
+.resumeCard {
+    margin: 50px 20% 40px 20%;
+}
+
+.resumeCard iframe {
+    box-shadow: 0em 0em .5em .5em var(--resume);
+    border-radius: 15px;
+    border: 2px solid black;
+}
+
+/*CONTACT CARD*/
+
+.contactCard {
+    margin: 50px 20% 40px 20%;
+    background-color: aliceblue;
+    box-shadow: 0em 0em .5em .5em var(--contact);
+    border-radius: 25px;
+    border: 2px solid black;
+    padding: 25px;
+    text-align: center;
+}
+
+.contactCard h1 {
+    font-family: 'runescape_chat_07regular';
+    font-size: 3rem;
+}
+
+button {
+    padding: 10px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: var(--projects);
+    border: 2px solid rgb(37, 37, 37);
+}
+
+.contactForm .contactInput {
+    width: 80%;
+    padding: 6px;
+    margin-top: 10px;
+}
+
+.contactSubmit {
+    padding: 7px;
+}
+
+.contactForm button {
+    margin-top: 20px;
+}
+
+.about-top-half {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    border-top: 2px solid black;
+    padding: 10px 25px;
+}
+
+.bottom-content {
+    padding: 10px 25px;
+}
+
+.about-grey {
+    color: rgba(48, 48, 48, .9);
+}
+
+.freq-header {
+    margin-left: 50px;
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+.freq-header2 {
+    margin-top: 25px;
+    margin-left: 50px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid black;
+}
+
+.flexbox {
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px 5px;
+}
+
+.flexbox .flex-col {
+    background-color: rgb(221, 229, 236);
+    padding: 10px 15px;
+}
+
+#about-table {
+    width: 100%;
+    text-align: right;
+}
+
+#about-table tr td {
+    padding: 5px 10px;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 25px;
+}
+
+.flex-item {
+    flex: 0 40%;
+    margin-bottom: 2%;
+}
+
+.disabled-button {
+    background-color: rgb(216, 216, 216);
+    color: grey;
+    border: 1px solid rgb(160, 160, 160);
+}
+
+.disabled-button:hover {
+    background-color: rgb(216, 216, 216) !important;
+    cursor: default !important;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1fr);
+    grid-column-gap: 30px;
+    grid-row-gap: 0px;
+    padding: 10px;
+    margin: 50px;
+    border: 5px solid aquamarine;
+}
+
+/* SITE CARDS / PROJECTS */
+
+.projectsCard {
+    margin: 40px 5% 40px 5%;
+}
+
+hr {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+.projectsD img {
+    padding: 0px 10px 0px 10px;
+}
+
+.siteCardPic {
+    object-fit: contain;
+    max-width: 90%;
+    padding: 15px;
+}
+
+.project0 {
+    background-color: rgb(240, 248, 255, .85);
+    box-shadow: 0em 0em .5em .5em var(--projects);
+    border-radius: 25px;
+    border: 2px solid black;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.project0 .languages,
+.project0 h2 {
+    text-align: center;
+    margin: 9px;
+}
+
+.project0 .languages {
+    margin-bottom: 10px
+}
+
+.project0 p {
+    padding: 5px 10px;
+}
+
+.profileCard h2 {
+    font-family: 'runescape_chat_07regular';
+    font-size: 2.5rem;
+}
+
+.profileCard h4 {
+    font-family: 'runescape_chat_07regular';
+    font-size: 1.6rem;
+}
+
+.project0 h2 {
+    padding: 15px 0px;
+    font-family: 'runescape_chat_07regular';
+    font-size: 2.5rem;
+}
+
+
+/* OLD SITE CSS FILE END */
+
+/*STAR BACKGROUND CSS*/
+
+.sky-container {
+    position: relative;
+    height: 35vh;
+    width: 100%;
+    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+    /* background: linear-gradient(180deg, #000000 0%, #181818 100%); */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* transform: rotateZ(15deg); */
+}
+
+.star {
+    position: absolute;
+    top: 10%;
+    left: 0px;
+    height: 2px;
+    background: linear-gradient(-45deg, var(--star1), rgba(0, 0, 255, 0));
+    filter: drop-shadow(0 0 6px var(--star2));
+    animation: tail 10000ms ease-in-out infinite, shooting 10000ms ease-in-out infinite;
+}
+
+.star::before,
+.star::after {
+    position: absolute;
+    content: '';
+    top: calc(60% - 1px);
+    right: 0;
+    height: 2px;
+    background: linear-gradient(-45deg, rgba(0, 0, 255, 0), var(--star1), rgba(0, 0, 255, 0));
+    border-radius: 100%;
+    transform: translateX(50%) rotateZ(45deg);
+    animation: shining 3000ms ease-in-out infinite;
+}
+
+.star::after {
+    transform: translateX(50%) rotateZ(-45deg);
+}
+
+.star:nth-child(1) {
+    top: calc(50% - 200px);
+    left: calc(50% - 300px);
+    animation-delay: 650ms;
+}
+
+.star:nth-child(1)::before,
+.star:nth-child(1)::after {
+    animation-delay: 650ms;
+}
+
+.star:nth-child(2) {
+    top: calc(50% - -50px);
+    left: calc(50% - 190px);
+    animation-delay: 150ms;
+}
+
+.star:nth-child(2)::before,
+.star:nth-child(2)::after {
+    animation-delay: 150ms;
+}
+
+.star:nth-child(3) {
+    top: calc(50% - -90px);
+    left: calc(50% - 200px);
+    animation-delay: 1600ms;
+}
+
+.star:nth-child(3)::before,
+.star:nth-child(3)::after {
+    animation-delay: 1600ms;
+}
+
+.star:nth-child(4) {
+    top: calc(50% - 50px);
+    left: calc(50% - 250px);
+    animation-delay: 4700ms;
+}
+
+.star:nth-child(4)::before,
+.star:nth-child(4)::after {
+    animation-delay: 4700ms;
+}
+
+.star:nth-child(5) {
+    top: calc(50% - -190px);
+    left: calc(50% - 200px);
+    animation-delay: 2100ms;
+}
+
+.star:nth-child(5)::before,
+.star:nth-child(5)::after {
+    animation-delay: 2100ms;
+}
+
+.star:nth-child(6) {
+    top: calc(50% - 200px);
+    left: calc(50% - 300px);
+    animation-delay: 650ms;
+}
+
+.star:nth-child(6)::before,
+.star:nth-child(6)::after {
+    animation-delay: 3500ms;
+}
+
+.star:nth-child(7) {
+    top: calc(50% - -50px);
+    left: calc(50% - 190px);
+    animation-delay: 150ms;
+}
+
+.star:nth-child(7)::before,
+.star:nth-child(7)::after {
+    animation-delay: 150ms;
+}
+
+.star:nth-child(8) {
+    top: calc(50% - -90px);
+    left: calc(50% - 200px);
+    animation-delay: 1600ms;
+}
+
+.star:nth-child(8)::before,
+.star:nth-child(8)::after {
+    animation-delay: 1600ms;
+}
+
+.star:nth-child(9) {
+    top: calc(50% - 50px);
+    left: calc(50% - 250px);
+    animation-delay: 4700ms;
+}
+
+.star:nth-child(9)::before,
+.star:nth-child(9)::after {
+    animation-delay: 4700ms;
+}
+
+.star:nth-child(10) {
+    top: calc(50% - -190px);
+    left: calc(50% - 200px);
+    animation-delay: 2100ms;
+}
+
+.star:nth-child(10)::before,
+.star:nth-child(10)::after {
+    animation-delay: 2100ms;
+}
+
+
+
+/* Animations */
+@keyframes tail {
+    0% {
+        width: 0;
+    }
+
+    30% {
+        width: 100px;
+    }
+
+    100% {
+        width: 0;
+    }
+}
+
+@keyframes shining {
+    0% {
+        width: 0;
+    }
+
+    50% {
+        width: 30px;
+    }
+
+    100% {
+        width: 0;
+    }
+}
+
+@keyframes shooting {
+    0% {
+        transform: translateX(-50vw);
+    }
+
+    100% {
+        transform: translateX(100vw);
+    }
+}
+
+@keyframes floating {
+    0% {
+        transform: translate(0, 0px);
+    }
+
+    35% {
+        transform: translate(0, 5px);
+        transform: rotate(1deg);
+    }
+
+    80% {
+        transform: rotate(-1deg)
+    }
+
+    100% {
+        transform: translate(0, -0px);
+        transform: rotate(0deg);
+    }
+}
+
+/* media  queries */
+@media screen and (max-width: 900px) {
+
+    /* Your mobile styles here */
+    .headerText {
+        font-size: 140%;
+    }
+
+    .headerText h1 {
+        padding: 5px;
+    }
+
+    body {
+        margin: 0px;
+    }
+
+    nav ul li {
+        padding: 5px 2px;
+        margin: 0px 10px;
+        min-width: 60px;
+    }
+
+    ul {
+        padding-inline-start: 0px;
+    }
+
+    .profileCard,
+    .projectsCard,
+    .resumeCard,
+    .contactCard {
+        margin: 40px 23px;
+    }
+
+    .project0 {
+        margin: 0px;
+    }
+
+    .about-top-half {
+        padding: 5px;
+    }
+
+    .about-top-half .flexbox {
+        flex-direction: column;
+    }
+
+    .about-top-half .flexbox .flex-col {
+        padding: 7px 10px;
+        margin: 5px;
+    }
+
+    .flex-item {
+        flex: 1;
+        margin-bottom: 30px;
+    }
+
+}
