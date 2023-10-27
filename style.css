@@ -4,6 +4,10 @@
     display: none;
 }
 
+#resumeframe:host {
+    --viewer-pdf-sidenav-width: 140px;
+}
+
 /* old */
 
 .App {
