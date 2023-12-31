@@ -74,8 +74,8 @@ header {
 
 nav {
     user-select: none;
-    border-top: 1px aliceblue solid;
-    border-bottom: 1px aliceblue solid;
+    /* border-top: 1px aliceblue solid; */
+    /* border-bottom: 1px aliceblue solid; */
 }
 
 a:-webkit-any-link {
@@ -103,6 +103,9 @@ nav ul li {
     min-width: 75px;
     box-shadow: .25em .2em black;
     transition: .25s;
+    font-family: 'runescape_chat_07regular';
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 :root {
@@ -298,6 +301,7 @@ button:hover {
 .flexbox .flex-col {
     background-color: rgb(221, 229, 236);
     padding: 10px 15px;
+    border-radius: 5px;
 }
 
 #about-table {
@@ -366,6 +370,7 @@ h1 {
     object-fit: contain;
     max-width: 90%;
     padding: 15px;
+    margin: auto;
 }
 
 .project0 {
@@ -416,7 +421,7 @@ h1 {
     position: relative;
     height: 35vh;
     width: 100%;
-    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+    /* background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); */
     /* background: linear-gradient(180deg, #000000 0%, #181818 100%); */
     overflow: hidden;
     display: flex;
