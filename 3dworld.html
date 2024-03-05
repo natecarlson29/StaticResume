@@ -403,6 +403,20 @@
         }
 
         animate();
+
+        // Prevent double-tap zoom and pinch-to-zoom
+        document.addEventListener('touchstart', function (event) {
+            if (event.touches.length === 2) {
+                event.preventDefault();
+            }
+        });
+        // Prevent pinch-to-zoom
+        document.addEventListener('touchmove', function (event) {
+            if (event.touches.length > 1) {
+                event.preventDefault();
+            }
+        });
+
     </script>
 </body>
 
