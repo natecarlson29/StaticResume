@@ -27,6 +27,7 @@
             padding: 10px;
             margin: auto;
             color: white;
+            text-align: center;
         }
 
         button {
@@ -58,6 +59,25 @@
             background-color: black;
             padding: 10px;
         }
+
+        .items {
+            display: flex;
+            flex-direction: column;
+            max-height: 160px;
+            overflow-y: scroll;
+        }
+
+        @media screen and (max-width: 900px) {
+
+            .joystick button {
+                width: 75px;
+            }
+
+            .joystick div {
+                display: flex;
+                flex-direction: row;
+            }
+        }
     </style>
 </head>
 
@@ -72,13 +92,15 @@
             </div>
             <button onclick="moveSquare('up')">DOWN</button>
         </div>
-        <div style="width: 50px; background-color: black;"></div>
+        <div style="width: 25px; background-color: black;"></div>
         <div class="item-control">
             <div>Place an Item:</div>
-            <button onclick="addCube()">Cube</button>
-            <button onclick="addSphere()">Sphere</button>
-            <button onclick="addCylinder()">Cylinder</button>
-            <button onclick="addDemon()">Demon</button>
+            <div class="items">
+                <button onclick="addCube()">Cube</button>
+                <button onclick="addSphere()">Sphere</button>
+                <button onclick="addCylinder()">Cylinder</button>
+                <button onclick="addDemon()">Demon</button>
+            </div>
         </div>
 
     </div>
@@ -109,7 +131,7 @@
 
         // Create Cannon.js world
         const world = new CANNON.World();
-        world.gravity.set(0, -9.82, 0); // Set gravity
+        world.gravity.set(0, -9.82, 0);
 
         // Create gradient background
         // const topColor = 0xffa07a;
@@ -131,25 +153,25 @@
 
         // Load ground texture
         const textureLoader = new THREE.TextureLoader();
-        const grassTexture = textureLoader.load('https://natesblobstorage.blob.core.windows.net/images/concrete.jpg'); // Replace 'concrete.jpg' with the path to your grass texture image file
+        const grassTexture = textureLoader.load('https://natesblobstorage.blob.core.windows.net/images/concrete.jpg');
         // Create ground shape
-        const groundSizeX = 25; // Width of the ground
-        const groundSizeY = 25; // Length of the ground
-        const groundSizeZ = .01; // Thickness of the ground
+        const groundSizeX = 25;
+        const groundSizeY = 25;
+        const groundSizeZ = .01;
         // Create Cannon.js box shape for the ground
         const groundShape = new CANNON.Box(new CANNON.Vec3(groundSizeX / 2, groundSizeY / 2, groundSizeZ / 2));
         // Create Cannon.js body for the ground
         const groundBody = new CANNON.Body({ mass: 0 });
         groundBody.addShape(groundShape);
-        groundBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2); // Set orientation
+        groundBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
         world.addBody(groundBody);
         // Create Three.js material for the ground with grass texture
-        const groundMaterial = new THREE.MeshLambertMaterial({ map: grassTexture, side: THREE.DoubleSide }); // Set grass texture and side
+        const groundMaterial = new THREE.MeshLambertMaterial({ map: grassTexture, side: THREE.DoubleSide });
         // Create Three.js mesh for the ground
-        const groundGeometry = new THREE.PlaneGeometry(groundSizeX, groundSizeY); // Set size
+        const groundGeometry = new THREE.PlaneGeometry(groundSizeX, groundSizeY);
         const groundMesh = new THREE.Mesh(groundGeometry, groundMaterial);
-        groundMesh.rotation.x = -Math.PI / 2; // Set orientation
-        scene.add(groundMesh); // Add ground mesh to the scene
+        groundMesh.rotation.x = -Math.PI / 2;
+        scene.add(groundMesh);
 
         // Add lights
         const ambientLight = new THREE.AmbientLight(0xffece3, 0.8);
@@ -162,8 +184,8 @@
         // const squareGeometry = new THREE.PlaneGeometry(2, 2);
         // const squareMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
         // const squareMesh = new THREE.Mesh(squareGeometry, squareMaterial);
-        // squareMesh.rotation.x = -Math.PI / 2; // Rotate the square 90 degrees around the X-axis to lay it flat against the ground
-        // squareMesh.position.set(0, .01, 0); // Set position on the ground
+        // squareMesh.rotation.x = -Math.PI / 2;
+        // squareMesh.position.set(0, .01, 0);
         // // Add the square to the scene
         // scene.add(squareMesh);
         let squareMesh;
@@ -210,15 +232,10 @@
             });
         }
         const intervalId = setInterval(toggleTexture, 500);
-        // setTimeout(() => {
-        //     clearInterval(intervalId);
-        // }, 10000); 
-
 
         // Add controls
         const controls = new THREE.OrbitControls(camera, renderer.domElement);
 
-        // Helper function to create objects
         function createObject(geometry, material, mass, position) {
 
             const mesh = new THREE.Mesh(geometry, material);
@@ -230,7 +247,7 @@
                 const radius = geometry.parameters.radius;
                 shape = new CANNON.Sphere(radius);
             } else {
-                shape = new CANNON.Box(new CANNON.Vec3(0.5, 0.5, 0.5)); // Assuming the object has dimensions of 1x1x1
+                shape = new CANNON.Box(new CANNON.Vec3(0.5, 0.5, 0.5));
             }
 
             const body = new CANNON.Body({ mass: mass });
@@ -239,7 +256,7 @@
 
             // Set higher friction for spheres
             if (geometry instanceof THREE.SphereGeometry) {
-                body.angularDamping = 0.5; // Higher damping for spheres
+                body.angularDamping = 0.5;
             }
 
             world.addBody(body);
@@ -249,7 +266,6 @@
             return mesh;
         }
 
-        // Function to add a cube
         function addCube() {
             const cubeGeometry = new THREE.BoxGeometry();
             const cubeMaterial = new THREE.MeshStandardMaterial({ color: Math.random() * 0xffffff });
@@ -259,7 +275,6 @@
             scene.add(cube);
         }
 
-        // Function to add a sphere
         function addSphere() {
             const sphereGeometry = new THREE.SphereGeometry();
             const sphereMaterial = new THREE.MeshStandardMaterial({ color: Math.random() * 0xffffff });
@@ -269,7 +284,6 @@
             scene.add(sphere);
         }
 
-        // Function to add a cylinder
         function addCylinder() {
             const cylinderGeometry = new THREE.CylinderGeometry();
             const cylinderMaterial = new THREE.MeshStandardMaterial({ color: Math.random() * 0xffffff });
@@ -302,14 +316,14 @@
 
                             // Create Cannon.js box shape
                             const shape = new CANNON.Box(new CANNON.Vec3(size.x / 2, size.y / 2, size.z / 2));
-                            // const shape = new CANNON.Box(new CANNON.Vec3(0.5, 0.5, 0.5)); // Assuming the object has dimensions of 1x1x1
+                            // const shape = new CANNON.Box(new CANNON.Vec3(0.5, 0.5, 0.5));
 
                             // Create Cannon.js body
                             const body = new CANNON.Body({
-                                mass: 10, // Set mass (1 is default)
-                                position: new CANNON.Vec3(object.position.x, object.position.y, object.position.z) // Set initial position
+                                mass: 10,
+                                position: new CANNON.Vec3(object.position.x, object.position.y, object.position.z)
                             });
-                            body.addShape(shape); // Add shape to the body
+                            body.addShape(shape);
                             object.userData.body = body;
                             objectGroup.add(object);
 
