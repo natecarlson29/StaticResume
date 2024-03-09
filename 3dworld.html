@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nate's 3D Builder</title>
     <style>
+        * {
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+        }
+
         body {
             margin: 0;
             overflow: hidden;
@@ -404,18 +409,16 @@
 
         animate();
 
-        // Prevent double-tap zoom and pinch-to-zoom
-        document.addEventListener('touchstart', function (event) {
-            if (event.touches.length === 2) {
-                event.preventDefault();
-            }
-        });
-        // Prevent pinch-to-zoom
-        document.addEventListener('touchmove', function (event) {
-            if (event.touches.length > 1) {
-                event.preventDefault();
-            }
-        });
+        // document.addEventListener('touchstart', function (event) {
+        //     if (event.touches.length === 2) {
+        //         event.preventDefault();
+        //     }
+        // });
+        // document.addEventListener('touchmove', function (event) {
+        //     if (event.touches.length > 1) {
+        //         event.preventDefault();
+        //     }
+        // });
 
     </script>
 </body>
