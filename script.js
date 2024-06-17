@@ -1,6 +1,6 @@
 const tab1Content = document.getElementById("tab1");
 const tab2Content = document.getElementById("tab2");
-const tab3Content = document.getElementById("tab3");
+// const tab3Content = document.getElementById("tab3");
 const tab4Content = document.getElementById("tab4");
 
 changeStarAbout = () => {
@@ -24,7 +24,7 @@ tab1 = () => {
     changeStarAbout();
     tab1Content.style.display = "block";
     tab2Content.style.display = "none";
-    tab3Content.style.display = "none";
+    // tab3Content.style.display = "none";
     tab4Content.style.display = "none";
 }
 
@@ -32,22 +32,22 @@ tab2 = () => {
     changeStarProjects();
     tab1Content.style.display = "none";
     tab2Content.style.display = "flex";
-    tab3Content.style.display = "none";
+    // tab3Content.style.display = "none";
     tab4Content.style.display = "none";
 }
 
-tab3 = () => {
-    changeStarResume();
-    tab1Content.style.display = "none";
-    tab2Content.style.display = "none";
-    tab3Content.style.display = "block";
-    tab4Content.style.display = "none";
-}
+// tab3 = () => {
+//     changeStarResume();
+//     tab1Content.style.display = "none";
+//     tab2Content.style.display = "none";
+//     tab3Content.style.display = "block";
+//     tab4Content.style.display = "none";
+// }
 
 tab4 = () => {
     changeStarContact();
     tab1Content.style.display = "none";
     tab2Content.style.display = "none";
-    tab3Content.style.display = "none";
+    // tab3Content.style.display = "none";
     tab4Content.style.display = "block";
 }
