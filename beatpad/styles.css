@@ -1,0 +1,196 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #222222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Full viewport height */
+}
+
+#button-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    /* 6 buttons per row */
+    grid-auto-rows: 1fr;
+    /* Each row takes up equal space */
+    gap: 20px;
+    /* Spacing between buttons */
+    width: 100%;
+    /* Full width of the screen */
+    height: 100%;
+    /* Full height of the screen */
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+button.sound-button {
+    background-color: #6200ea;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* Full width of the grid cell */
+    height: 100%;
+    /* Full height of the grid cell */
+    box-shadow: 5px 5px grey;
+    /* Default shadow */
+}
+
+button.sound-button:active {
+    transform: translateY(2px);
+    /* Push the button down */
+    box-shadow: 0px 1px 1px grey;
+    /* Reduced shadow to appear pressed */
+}
+
+button.sound-button:hover {
+    background-color: #3700b3;
+}
+
+
+/* new */
+
+.master-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+#edit-panel {
+    background-color: rgb(58, 58, 58);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#add-sounds {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    border: 2px dashed #6200ea;
+    border-radius: 10px;
+    text-align: center;
+    color: #6200ea;
+    font-weight: bold;
+    background-color: #f4f4f9;
+    transition: background-color 0.2s;
+}
+
+#trash {
+    background-color: red;
+    height: 350px;
+}
+
+#add-sounds.drag-over {
+    background-color: #e0e0ff;
+}
+
+/* new 2 */
+/* #edit-panel {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #6200ea;
+    border-radius: 10px;
+    background-color: #f4f4f9;
+    width: 100%;
+    box-sizing: border-box;
+} */
+
+#edit-panel h3 {
+    margin: 0 0 10px;
+    color: #6200ea;
+    font-size: 18px;
+}
+
+#all-sounds-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#all-sounds-list li {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #e0e0ff;
+    color: #6200ea;
+    border: 1px solid #6200ea;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+#all-sounds-list li:hover {
+    background-color: #c5c5ff;
+    color: #3700b3;
+}
+
+/* slider css */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 120px;
+    height: 68px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "EDIT";
+    height: 52px;
+    width: 52px;
+    left: 8px;
+    bottom: 8px;
+    background-color: white;
+    transition: .4s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+input:checked+.slider {
+    background-color: #28a745;
+}
+
+input:checked+.slider:before {
+    transform: translateX(52px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* slider end*/
