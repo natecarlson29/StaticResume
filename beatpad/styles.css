@@ -2,7 +2,10 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #222222;
+    /* background-color: #222222; */
+    background: url(pic/metal3.jpg);
+    background-size: auto;
+    opacity: .9;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,34 +29,32 @@ body {
     padding: 10px;
 }
 
-button.sound-button {
-    background-color: #6200ea;
-    color: white;
+.pushable {
+    background: hsl(340deg 100% 32%);
+    border-radius: 12px;
     border: none;
-    font-size: 16px;
-    border-radius: 5px;
+    padding: 0;
     cursor: pointer;
-    transition: all 0.1s ease-in-out;
+    outline-offset: 4px;
+}
+
+.front {
+    display: block;
+    padding: 12px 42px;
+    border-radius: 12px;
+    font-size: 1.25rem;
+    background: hsl(345deg 100% 47%);
+    color: white;
+    transform: translateY(-6px);
+    height: 95%;
     display: flex;
-    justify-content: center;
     align-items: center;
-    width: 100%;
-    /* Full width of the grid cell */
-    height: 100%;
-    /* Full height of the grid cell */
-    box-shadow: 5px 5px grey;
-    /* Default shadow */
+    justify-content: center;
 }
 
-button.sound-button:active {
-    transform: translateY(2px);
-    /* Push the button down */
-    box-shadow: 0px 1px 1px grey;
-    /* Reduced shadow to appear pressed */
-}
-
-button.sound-button:hover {
-    background-color: #3700b3;
+.pushable:active .front {
+    transform: translateY(0px);
+    height: 96%;
 }
 
 

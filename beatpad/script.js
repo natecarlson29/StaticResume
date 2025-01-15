@@ -14,13 +14,19 @@ let pendingDeletions = new Set();
 let editMode = false; // Track the edit mode state
 let draggedIndex = null; // Track the index of the dragged button
 
+
 function createSoundButtons() {
     const container = document.getElementById('button-container');
     container.innerHTML = '';
     activeSounds.forEach((sound, index) => {
         const button = document.createElement('button');
-        button.classList.add('sound-button');
-        button.textContent = sound.split('/').pop(); // Display filename only
+        button.classList.add('pushable');
+
+        const span = document.createElement('span');
+        span.classList.add('front');
+        span.textContent = sound.split('/').pop(); // Display filename only
+
+        button.appendChild(span);
         button.draggable = editMode; // Make the button draggable only in edit mode
         if (editMode) {
             button.ondragstart = (event) => handleDragStart(event, index);
