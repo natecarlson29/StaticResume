@@ -1,3 +1,8 @@
+html,
+body {
+    touch-action: manipulation;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
