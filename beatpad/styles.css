@@ -15,11 +15,11 @@ body {
 
 #button-container {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    /* 6 buttons per row */
+    /* grid-template-columns: repeat(6, 1fr); */
+    grid-template-columns: 1fr;
     grid-auto-rows: 1fr;
     /* Each row takes up equal space */
-    gap: 20px;
+    gap: 5px;
     /* Spacing between buttons */
     width: 100%;
     /* Full width of the screen */
@@ -40,7 +40,7 @@ body {
 
 .front {
     display: block;
-    padding: 12px 42px;
+    padding: 2px 7px;
     border-radius: 12px;
     font-size: 1.25rem;
     background: hsl(345deg 100% 47%);
