@@ -14,6 +14,19 @@ let pendingDeletions = new Set();
 let editMode = false; // Track the edit mode state
 let draggedIndex = null; // Track the index of the dragged button
 
+// Dictionary to store preloaded audio objects
+const preloadedAudios = {};
+
+// Preload audio files
+function preloadAudios() {
+    allSounds.forEach(sound => {
+        const audio = new Audio(sound);
+        preloadedAudios[sound] = audio;
+    });
+}
+
+// Call preloadAudios at the start of the application
+preloadAudios();
 
 function createSoundButtons() {
     const container = document.getElementById('button-container');
@@ -44,8 +57,11 @@ function createSoundButtons() {
 }
 
 function playSound(sound) {
-    const audio = new Audio(sound);
-    audio.play();
+    const audio = preloadedAudios[sound];
+    if (audio) {
+        audio.currentTime = 0; // Reset audio to start
+        audio.play();
+    }
 }
 
 function handleDragStart(event, index) {
