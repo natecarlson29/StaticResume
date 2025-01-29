@@ -57,10 +57,10 @@ function createSoundButtons() {
 }
 
 function playSound(sound) {
-    const audio = preloadedAudios[sound];
-    if (audio) {
-        audio.currentTime = 0; // Reset audio to start
-        audio.play();
+    const originalAudio = preloadedAudios[sound];
+    if (originalAudio) {
+        const audioClone = originalAudio.cloneNode(); // Clone the audio element
+        audioClone.play();
     }
 }
 
