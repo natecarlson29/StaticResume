@@ -14,21 +14,19 @@ let pendingDeletions = new Set();
 let editMode = false; // Track the edit mode state
 let draggedIndex = null; // Track the index of the dragged button
 
-// Create an AudioContext
-const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-
-// Dictionary to store preloaded audio buffers
-const preloadedAudioBuffers = {};
+// Dictionary to store preloaded audio objects
+const preloadedAudios = {};
 
 // Preload audio files
-async function preloadAudios() {
-    for (const sound of allSounds) {
-        const response = await fetch(sound);
-        const arrayBuffer = await response.arrayBuffer();
-        const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-        preloadedAudioBuffers[sound] = audioBuffer;
-    }
+function preloadAudios() {
+    allSounds.forEach(sound => {
+        const audio = new Audio(sound);
+        preloadedAudios[sound] = audio;
+    });
 }
+
+// Call preloadAudios at the start of the application
+preloadAudios();
 
 function createSoundButtons() {
     const container = document.getElementById('button-container');
@@ -59,12 +57,10 @@ function createSoundButtons() {
 }
 
 function playSound(sound) {
-    const audioBuffer = preloadedAudioBuffers[sound];
-    if (audioBuffer) {
-        const source = audioContext.createBufferSource();
-        source.buffer = audioBuffer;
-        source.connect(audioContext.destination);
-        source.start(0);
+    const audio = preloadedAudios[sound];
+    if (audio) {
+        const audioClone = audio.cloneNode(); // Clone the audio element
+        audioClone.play();
     }
 }
 
