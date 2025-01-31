@@ -33,6 +33,13 @@ async function preloadAudios() {
 // Call preloadAudios at the start of the application
 preloadAudios();
 
+// Ensure AudioContext is resumed on user interaction
+document.addEventListener('touchstart', () => {
+    if (audioContext.state === 'suspended') {
+        audioContext.resume();
+    }
+}, { once: true });
+
 function createSoundButtons() {
     const container = document.getElementById('button-container');
     container.innerHTML = '';
