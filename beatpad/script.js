@@ -14,14 +14,14 @@ let pendingDeletions = new Set();
 let editMode = false; // Track the edit mode state
 let draggedIndex = null; // Track the index of the dragged button
 
-// Create an AudioContext
-const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-
 // Dictionary to store preloaded audio buffers
 const preloadedAudioBuffers = {};
+let audioContext;
 
-// Preload audio files
-async function preloadAudios() {
+// Function to create AudioContext and preload audio files
+async function initializeAudio() {
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
     for (const sound of allSounds) {
         const response = await fetch(sound);
         const arrayBuffer = await response.arrayBuffer();
@@ -30,13 +30,12 @@ async function preloadAudios() {
     }
 }
 
-// Call preloadAudios at the start of the application
-preloadAudios();
-
-// Ensure AudioContext is resumed on user interaction
-document.addEventListener('touchstart', () => {
-    if (audioContext.state === 'suspended') {
-        audioContext.resume();
+// Ensure AudioContext is created and resumed on user interaction
+document.addEventListener('click', async () => {
+    if (!audioContext) {
+        await initializeAudio();
+    } else if (audioContext.state === 'suspended') {
+        await audioContext.resume();
     }
 }, { once: true });
 
