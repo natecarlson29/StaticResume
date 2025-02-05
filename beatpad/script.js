@@ -42,15 +42,23 @@ document.addEventListener('click', async () => {
 function createSoundButtons() {
     const container = document.getElementById('button-container');
     container.innerHTML = '';
+
+    if (activeSounds.length > 16) {
+        showNotification("You can only have a maximum of 16 buttons at a time");
+        activeSounds = activeSounds.slice(0, 16); // Limit to 16 buttons
+    }
+
+    const numButtons = activeSounds.length;
+    const numRowsCols = Math.ceil(Math.sqrt(numButtons)); // Calculate the number of rows and columns
+
+    container.style.gridTemplateColumns = `repeat(${numRowsCols}, 1fr)`;
+    container.style.gridTemplateRows = `repeat(${numRowsCols}, 1fr)`;
+
     activeSounds.forEach((sound, index) => {
-        const button = document.createElement('button');
-        button.classList.add('pushable');
+        const button = document.createElement('div');
+        button.classList.add('btn');
+        button.textContent = sound.split('/').pop(); // Display filename only
 
-        const span = document.createElement('span');
-        span.classList.add('front');
-        span.textContent = sound.split('/').pop(); // Display filename only
-
-        button.appendChild(span);
         button.draggable = editMode; // Make the button draggable only in edit mode
         if (editMode) {
             button.ondragstart = (event) => handleDragStart(event, index);
@@ -65,6 +73,24 @@ function createSoundButtons() {
         container.appendChild(button);
     });
     updateAvailableSounds();
+}
+
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.classList.add('notification');
+    notification.textContent = message;
+    document.body.appendChild(notification);
+
+    // Force a reflow to ensure the fade-in transition works
+    notification.offsetHeight;
+    notification.style.opacity = 1;
+
+    setTimeout(() => {
+        notification.style.opacity = 0;
+        notification.addEventListener('transitionend', () => {
+            notification.remove();
+        });
+    }, 3000); // Display for 3 seconds before fading out
 }
 
 function playSound(sound) {

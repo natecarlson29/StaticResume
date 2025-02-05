@@ -7,7 +7,6 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    /* background-color: #222222; */
     background: url(pic/metal3.jpg);
     background-size: auto;
     opacity: .9;
@@ -15,53 +14,60 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    /* Full viewport height */
 }
 
 #button-container {
     display: grid;
-    /* grid-template-columns: repeat(6, 1fr); */
-    grid-template-columns: 1fr;
-    grid-auto-rows: 1fr;
-    /* Each row takes up equal space */
-    gap: 5px;
+    gap: 10px;
     /* Spacing between buttons */
     width: 100%;
-    /* Full width of the screen */
     height: 100%;
-    /* Full height of the screen */
     box-sizing: border-box;
     padding: 10px;
 }
 
-.pushable {
-    background: hsl(340deg 100% 32%);
+.btn {
+    background: hsl(345deg 100% 47%);
     border-radius: 12px;
     border: none;
-    padding: 0;
+    padding: 2px 7px;
     cursor: pointer;
     outline-offset: 4px;
-}
-
-.front {
-    display: block;
-    padding: 2px 7px;
-    border-radius: 12px;
+    width: calc(100% - 10px);
+    /* Adjust width to respect the gap */
+    height: calc(100% - 10px);
+    /* Adjust height to respect the gap */
     font-size: 1.25rem;
-    background: hsl(345deg 100% 47%);
     color: white;
-    transform: translateY(-6px);
-    height: 95%;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.1s ease-in-out;
+    /* Smooth transition for shrinking effect */
+    text-align: center;
+    user-select: none;
 }
 
-.pushable:active .front {
-    transform: translateY(0px);
-    height: 96%;
+.btn:active {
+    transform: scale(0.95);
+    background: hsl(340deg 100% 32%);
+    color: black;
 }
 
+.notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 1000;
+}
 
 /* new */
 
@@ -145,8 +151,8 @@ body {
 .switch {
     position: relative;
     display: inline-block;
-    width: 120px;
-    height: 68px;
+    width: 40px;
+    height: 22px;
 }
 
 .switch input {
@@ -169,16 +175,16 @@ body {
 .slider:before {
     position: absolute;
     content: "EDIT";
-    height: 52px;
-    width: 52px;
-    left: 8px;
-    bottom: 8px;
+    height: 18px;
+    width: 18px;
+    left: 2px;
+    bottom: 2px;
     background-color: white;
     transition: .4s;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
+    font-size: 8px;
     font-weight: bold;
 }
 
@@ -187,7 +193,8 @@ input:checked+.slider {
 }
 
 input:checked+.slider:before {
-    transform: translateX(52px);
+    transform: translateX(13px);
+    bottom: 2px;
 }
 
 /* Rounded sliders */
