@@ -34,22 +34,19 @@ body {
 
 .btn {
     background: hsl(345deg 100% 47%);
+    border: 3px solid black;
     border-radius: 12px;
-    border: none;
     padding: 2px 7px;
     cursor: pointer;
     outline-offset: 4px;
-    width: calc(100% - 10px);
-    /* Adjust width to respect the gap */
-    height: calc(100% - 10px);
-    /* Adjust height to respect the gap */
+    width: calc(100% - 15px);
+    height: calc(100% - 15px);
     font-size: 1.25rem;
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.1s ease-in-out;
-    /* Smooth transition for shrinking effect */
     text-align: center;
     user-select: none;
     touch-action: manipulation;
