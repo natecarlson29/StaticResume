@@ -62,11 +62,13 @@ function createSoundButtons() {
         button.draggable = editMode; // Make the button draggable only in edit mode
         if (editMode) {
             button.ondragstart = (event) => handleDragStart(event, index);
-            button.ondragover = (event) => handleDragOver(event, index);
+            button.ondragover = (event) => handleDragOver(event);
+            button.ondragleave = (event) => handleDragLeave(event);
             button.ondrop = (event) => handleDrop(event, index);
         } else {
             button.ondragstart = null;
             button.ondragover = null;
+            button.ondragleave = null;
             button.ondrop = null;
         }
         button.onclick = () => playSound(sound); // Add click event to play sound
@@ -93,6 +95,27 @@ function showNotification(message) {
     }, 3000); // Display for 3 seconds before fading out
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const trash = document.getElementById('trash');
+
+    trash.addEventListener('dragenter', () => {
+        trash.style.backgroundColor = 'darkred'; // Change to a darker shade of red
+    });
+
+    trash.addEventListener('dragover', (event) => {
+        event.preventDefault(); // Allow the drop action
+        trash.style.backgroundColor = 'darkred'; // Maintain the darker shade of red
+    });
+
+    trash.addEventListener('dragleave', () => {
+        trash.style.backgroundColor = ''; // Revert to the original color
+    });
+
+    trash.addEventListener('drop', () => {
+        trash.style.backgroundColor = ''; // Revert to the original color
+    });
+});
+
 function playSound(sound) {
     const audioBuffer = preloadedAudioBuffers[sound];
     if (audioBuffer) {
@@ -108,19 +131,33 @@ function handleDragStart(event, index) {
     event.dataTransfer.setData('text/plain', index); // Pass the index of the dragged button
 }
 
-function handleDragOver(event, index) {
+function handleDragOver(event) {
     if (editMode) {
         event.preventDefault(); // Allow the drop action only in edit mode
+        const targetButton = event.target.closest('.btn');
+        if (targetButton) {
+            targetButton.style.backgroundColor = 'darkred'; // Change to a darker shade of red
+        }
+    }
+}
+
+function handleDragLeave(event) {
+    console.log('drag leave');
+    if (editMode) {
+        const targetButton = event.target.closest('.btn');
+        if (targetButton) {
+            targetButton.style.backgroundColor = ''; // Revert to the original color
+        }
     }
 }
 
 function handleDrop(event, index) {
     if (editMode) {
         event.preventDefault();
-        const targetId = event.target.id;
+        const targetElement = event.target.closest('#trash');
         const draggedSound = activeSounds[draggedIndex];
 
-        if (targetId === 'trash') {
+        if (targetElement) {
             // Remove the sound if dropped in the trash zone
             activeSounds.splice(draggedIndex, 1);
         } else {
